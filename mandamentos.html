@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Os Dez Mandamentos</title>
+    <link rel="Cinzel Decorative" href="https://fonts.googleapis.com">
+    <link rel="Cinzel Decorative" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1>Os Dez Mandamentos</h1>
+        <p>Clique em cada card para conferir o que os mandamentos dizem e os seus significados.</p>
+    </header>
+
+    <main>
+
+        <div class="cards-container">
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="img/frontCard1.png" alt="1° mandamento">
+                    </div>
+                    <div class="card-back">
+                        <img src="img/backCard1.png" alt="1° mandamento">
+                        <button onclick="mostrarSignificado(1); event.stopPropagation()">Explicação</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="img/frontCrad2.png" alt="2° mandamento">
+                    </div>
+                    <div class="card-back">
+                        <img src="img/backCard2.png" alt="2° mandamento">
+                        <button onclick="mostrarSignificado(2); event.stopPropagation()">Explicação</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="img/frontCard3.png" alt="3° mandamento">
+                    </div>
+                    <div class="card-back">
+                        <img src="img/backCard3.png" alt="3° mandamento">
+                        <button onclick="mostrarSignificado(3); event.stopPropagation()">Explicação</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="img/frontCard4.png" alt="4° mandamento">
+                    </div>
+                    <div class="card-back">
+                        <img src="img/backCard4.png" alt="4° mandamento">
+                        <button onclick="mostrarSignificado(4); event.stopPropagation()">Explicação</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="img/frontCard5.png" alt="5° mandamento">
+                    </div>
+                    <div class="card-back">
+                        <img src="img/backCard5.png" alt="5° mandamento">
+                        <button onclick="mostrarSignificado(5); event.stopPropagation()">Explicação</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="img/frontCard6.png" alt="6° mandamento">
+                    </div>
+                    <div class="card-back">
+                        <img src="img/backCard6.png" alt="6° mandamento">
+                        <button onclick="mostrarSignificado(6); event.stopPropagation()">Explicação</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="img/frontCard7.png" alt="7° mandamento">
+                    </div>
+                    <div class="card-back">
+                        <img src="img/backCard7.png" alt="7° mandamento">
+                        <button onclick="mostrarSignificado(7); event.stopPropagation()">Explicação</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="img/frontCard8.png" alt="8° mandamento">
+                    </div>
+                    <div class="card-back">
+                        <img src="img/backCard8.png" alt="8° mandamento">
+                        <button onclick="mostrarSignificado(8); event.stopPropagation()">Explicação</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="img/frontCard9.png" alt="9° mandamento">
+                    </div>
+                    <div class="card-back">
+                        <img src="img/backCard9.png" alt="9° mandamento">
+                        <button onclick="mostrarSignificado(9); event.stopPropagation()">Explicação</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="img/frontCard10.png" alt="10° mandamento">
+                    </div>
+                    <div class="card-back">
+                        <img src="img/backCard10.png" alt="10° mandamento">
+                        <button onclick="mostrarSignificado(10); event.stopPropagation()">Explicação</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="modal-significado" class="modal">
+            <div class="modal-content">
+                <span class="fechar">&times;</span>
+                <h3 id="modal-titulo">Mandamento</h3>
+                <p id="modal-texto">Texto do significado aqui</p>
+            </div>
+        </div>
+
+        <div class="proximo-passo">
+            <a href="ordenar.html">
+                <button class="btn-avancar">Avançar para o Desafio</button>
+            </a>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

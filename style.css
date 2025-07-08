@@ -11,6 +11,11 @@ button {
   min-height: 44px; /* padrão recomendado pelo Google */
 }
 
+.dragando {
+  opacity: 0.6;
+  background-color: #444;
+}
+
 .tela-inicial {
     min-height: 100vh;
     background-color: #1E2A38;

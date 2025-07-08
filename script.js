@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // JOGO DE ORDENAR
+  // JOGO DE ORDENAR (com suporte a celular)
   const lista = document.getElementById("lista-mandamentos");
   const verificarBtn = document.getElementById("verificar");
 
@@ -39,20 +39,19 @@ document.addEventListener("DOMContentLoaded", () => {
       const correta = ordemAtual.every((txt, i) => txt === mandamentosOrdenados[i]);
       const feedback = document.getElementById("feedback-ordem");
 
-     if (correta) {
-  feedback.innerHTML = `
-    <span class="acerto">🎉 Parabéns! Você concluiu todos os desafios com sucesso!</span>
-    <div style="margin-top: 20px; font-size: 18px;">
-      Agora você conhece bem os Dez Mandamentos! Que tal revisar ou compartilhar com alguém?
-    </div>
-    <div class="proximo-passo" style="margin-top: 30px;">
-      <a href="index.html">
-        <button class="btn-avancar">Voltar ao Início</button>
-      </a>
-    </div>
-  `;
-}
-      else {
+      if (correta) {
+        feedback.innerHTML = `
+          <span class="acerto">🎉 Parabéns! Você concluiu todos os desafios com sucesso!</span>
+          <div style="margin-top: 20px; font-size: 18px;">
+            Agora você conhece bem os Dez Mandamentos! Que tal revisar ou compartilhar com alguém?
+          </div>
+          <div class="proximo-passo" style="margin-top: 30px;">
+            <a href="index.html">
+              <button class="btn-avancar">Voltar ao Início</button>
+            </a>
+          </div>
+        `;
+      } else {
         feedback.innerHTML = `<span class="erro">❌ Ainda não está correto. Tente ajustar a ordem.</span>`;
       }
     });
@@ -60,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // --------------------------------------
-// SIGNIFICADOS DOS MANDAMENTOS (NÃO ALTERADO)
+// SIGNIFICADOS DOS MANDAMENTOS
 const significadosMandamentos = {
   1: "Devemos adorar somente a Deus.",
   2: "Não devemos criar ou adorar ídolos ou imagens que possam substituir a adoração a Deus.",
@@ -86,8 +85,7 @@ function mostrarSignificado(numero) {
 }
 
 // --------------------------------------
-// LISTA CORRETA DOS MANDAMENTOS PARA ORDENAR (NÃO ALTERADO)
-
+// ORDEM CORRETA DOS MANDAMENTOS
 const mandamentosOrdenados = [
   "Não terás outros deuses diante de Deus.",
   "Não farás para ti imagem de escultura.",
@@ -101,47 +99,23 @@ const mandamentosOrdenados = [
   "Não cobiçarás."
 ];
 
+// NOVA VERSÃO com SortableJS (funciona em celular!)
 function criarListaOrdenavel() {
   const lista = document.getElementById("lista-mandamentos");
   const embaralhada = [...mandamentosOrdenados].sort(() => Math.random() - 0.5);
 
+  lista.innerHTML = "";
+
   embaralhada.forEach((texto) => {
     const li = document.createElement("li");
     li.textContent = texto;
-    li.draggable = true;
-
-    li.addEventListener("dragstart", () => {
-      li.classList.add("dragging");
-    });
-
-    li.addEventListener("dragend", () => {
-      li.classList.remove("dragging");
-    });
-
+    li.classList.add("item-mandamento");
     lista.appendChild(li);
   });
 
-  lista.addEventListener("dragover", (e) => {
-    e.preventDefault();
-    const dragging = document.querySelector(".dragging");
-    const afterElement = getDragAfterElement(lista, e.clientY);
-    if (afterElement == null) {
-      lista.appendChild(dragging);
-    } else {
-      lista.insertBefore(dragging, afterElement);
-    }
+  // Ativa o SortableJS (funciona em celular)
+  Sortable.create(lista, {
+    animation: 150,
+    ghostClass: "dragando"
   });
-}
-
-function getDragAfterElement(container, y) {
-  const items = [...container.querySelectorAll("li:not(.dragging)")];
-  return items.reduce((closest, child) => {
-    const box = child.getBoundingClientRect();
-    const offset = y - box.top - box.height / 2;
-    if (offset < 0 && offset > closest.offset) {
-      return { offset, element: child };
-    } else {
-      return closest;
-    }
-  }, { offset: Number.NEGATIVE_INFINITY }).element;
 }
